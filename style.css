@@ -1,14 +1,16 @@
-.container {
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
     text-align: center;
-    margin-top: 50px;
 }
 
 textarea {
-    width: 300px;
+    width: 80%;
     height: 100px;
-    margin-bottom: 20px;
 }
 
-#mermaidOutput img {
+#mermaidChart {
     margin-top: 20px;
+    text-align: left;
+    display: inline-block;
 }
