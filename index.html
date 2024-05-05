@@ -2,24 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mermaid Chart Example</title>
+    <title>Direct Mermaid Render</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
 </head>
 <body>
-    <div id="mermaidChart"></div>
-
+    <div class="mermaid">
+        graph TD; A-->B; A-->C; B-->D; C-->D;
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            mermaid.initialize({ startOnLoad: false });
-            const graphDefinition = 'graph TD; A-->B; A-->C; B-->D; C-->D;';
-            const config = {
-                theme: 'default'
-            };
-            mermaid.render('theGraph', graphDefinition, (svgCode) => {
-                document.getElementById('mermaidChart').innerHTML = svgCode;
-            }, config);
-        });
+        mermaid.initialize({ startOnLoad: true });
     </script>
 </body>
 </html>
