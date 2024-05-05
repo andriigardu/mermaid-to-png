@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mermaid Chart Test</title>
+    <title>Mermaid Chart Example</title>
 </head>
 <body>
-    <div id="mermaidDiv"></div>
+    <div id="mermaidChart"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>
-        mermaid.initialize({ startOnLoad: false });
-
-        function renderMermaid() {
-            const graphDefinition = 'graph TD; A-->B;';
-            const renderDiv = document.getElementById('mermaidDiv');
-            mermaid.mermaidAPI.render('graphDiv', graphDefinition, (svgCode) => {
-                renderDiv.innerHTML = svgCode;
-            });
-        }
-
-        // Ensure that the DOM is fully loaded before rendering
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMermaid();
+        document.addEventListener("DOMContentLoaded", () => {
+            mermaid.initialize({ startOnLoad: false });
+            const graphDefinition = 'graph TD; A-->B; A-->C; B-->D; C-->D;';
+            const config = {
+                theme: 'default'
+            };
+            mermaid.render('theGraph', graphDefinition, (svgCode) => {
+                document.getElementById('mermaidChart').innerHTML = svgCode;
+            }, config);
         });
     </script>
 </body>
