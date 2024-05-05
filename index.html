@@ -10,8 +10,9 @@
     <h1>Mermaid Diagram Renderer</h1>
     <textarea id="mermaidInput" placeholder="Enter your Mermaid chart code here..."></textarea>
     <button onclick="renderChart()">Render Chart</button>
+    <button id="copyButton" style="display:none;">Copy Image</button>
     <div id="mermaidChart"></div>
-    <div id="popupMessage" style="display:none;">Copied to the clipboard!</div>
+    <div id="popupMessage" style="display:none; position: fixed; bottom: 20px; right: 20px; background-color: white; border: 1px solid #ccc; padding: 10px;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/mermaid@8.0.0/dist/mermaid.min.js"></script>
     <script>
