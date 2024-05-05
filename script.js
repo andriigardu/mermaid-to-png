@@ -21,7 +21,31 @@ function convertSVGToPNG(svgElement) {
     img.onload = function() {
         ctx.drawImage(img, 0, 0);
         const pngImg = canvas.toDataURL("image/png");
-        document.getElementById('mermaidOutput').innerHTML = `<img src="${pngImg}" />`;
+        const outputImg = document.createElement('img');
+        outputImg.src = pngImg;
+        document.getElementById('mermaidOutput').innerHTML = '';
+        document.getElementById('mermaidOutput').appendChild(outputImg);
+        copyImageToClipboard(pngImg);
     };
     img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+}
+
+function copyImageToClipboard(dataUrl) {
+    const img = new Image();
+    img.src = dataUrl;
+    const canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const ctx = canvas.getContext('2d');
+    img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob(blob => {
+            const item = new ClipboardItem({ "image/png": blob });
+            navigator.clipboard.write([item]).then(function() {
+                console.log('Image copied to clipboard');
+            }, function(error) {
+                console.error('Error copying image: ', error);
+            });
+        });
+    };
 }
