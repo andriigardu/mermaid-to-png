@@ -2,10 +2,10 @@ mermaid.initialize({ startOnLoad: false });
 
 function generateChart() {
     const input = document.getElementById('mermaidInput').value;
-    mermaid.mermaidAPI.render('mermaidChart', input, function(svgCode) {
-        const svgElement = document.createElement('div');
-        svgElement.innerHTML = svgCode;
-        convertSVGToPNG(svgElement.firstChild);
+    // Use a hidden div to initially render the SVG
+    mermaid.mermaidAPI.render('generatedMermaid', input, function(svgCode, bindFunctions) {
+        document.getElementById('mermaidTempRender').innerHTML = svgCode;
+        convertSVGToPNG(document.getElementById('generatedMermaid'));
     });
 }
 
