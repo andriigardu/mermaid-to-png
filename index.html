@@ -11,8 +11,8 @@
         <textarea id="mermaidInput" placeholder="Paste your Mermaid chart code here..."></textarea>
         <button onclick="generateChart()">Generate Chart</button>
         <div id="mermaidOutput"></div>
-        <!-- Hidden SVG container for Mermaid rendering -->
-        <div style="visibility: hidden; position: absolute; width: 0; height: 0;" id="mermaidTempRender"></div>
+        <!-- Improved hidden SVG container setup -->
+        <div id="mermaidTempRender" style="width: 0; height: 0; overflow: hidden;"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script src="script.js"></script>
