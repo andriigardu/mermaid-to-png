@@ -7,17 +7,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     mermaid.initialize({ startOnLoad: false });
 
-    renderButton.onclick = function() {
-        const input = inputArea.value;
-        mermaid.render('graphDiv', input, function(svgCode) {
-            const svgElement = document.createElement('div');
-            svgElement.innerHTML = svgCode;
-            const svg = svgElement.firstChild;
-            outputDiv.innerHTML = '';
-            outputDiv.appendChild(svg);
-            convertSVGToPNG(svg);
-        });
-    };
+   renderButton.addEventListener('click', function() {
+    const input = document.getElementById('mermaidInput').value;
+    if (!input.trim()) {
+        alert("Please enter some Mermaid code.");
+        return;
+    }
+    mermaid.render('generatedGraph', input, function(svgCode, bindFunctions) {
+        const svgWrapper = document.createElement('div');
+        svgWrapper.innerHTML = svgCode;
+        const svgElement = svgWrapper.firstChild;
+        if (svgElement) {
+            const outputDiv = document.getElementById('mermaidChart');
+            outputDiv.innerHTML = ''; // Clear previous outputs
+            outputDiv.appendChild(svgElement);
+        } else {
+            console.error("No SVG was generated.");
+            alert("Failed to generate SVG. Please check your Mermaid syntax.");
+        }
+    });
+});
 
     function convertSVGToPNG(svg) {
         const serializer = new XMLSerializer();
