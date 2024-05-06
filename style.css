@@ -22,3 +22,7 @@ textarea {
     border: 1px solid #ccc;
     padding: 10px;
 }
+/* Continue with your existing styles and consider styles for buttons when they are active or disabled */
+button:disabled {
+    background-color: #ccc;
+}
