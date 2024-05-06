@@ -9,21 +9,11 @@
 <body>
     <h1>Mermaid Diagram Renderer</h1>
     <textarea id="mermaidInput" placeholder="Enter your Mermaid chart code here..."></textarea>
-    <button onclick="renderChart()">Render Chart</button>
+    <button id="renderButton">Render Chart</button>
     <button id="copyButton" style="display:none;">Copy Image</button>
     <div id="mermaidChart"></div>
-    <div id="popupMessage" style="display:none; position: fixed; bottom: 20px; right: 20px; background-color: white; border: 1px solid #ccc; padding: 10px;"></div>
-
+    <div id="popupMessage" style="display:none;"></div>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@8.0.0/dist/mermaid.min.js"></script>
-    <script>
-        mermaid.initialize({ startOnLoad: false });
-
-        function renderChart() {
-            const input = document.getElementById('mermaidInput').value;
-            mermaid.render('graphDiv', input, function(svgCode) {
-                document.getElementById('mermaidChart').innerHTML = svgCode;
-            });
-        }
-    </script>
+    <script src="app.js"></script> <!-- Externalize your JavaScript for cleaner management -->
 </body>
 </html>
